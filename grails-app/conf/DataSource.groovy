@@ -1,9 +1,19 @@
 dataSource {
-    pooled = true
-    jmxExport = true
-    driverClassName = "org.h2.Driver"
-    username = "sa"
-    password = ""
+
+    mongo {
+        dbCreate = "update"
+        host = "127.0.0.1"
+        port = 27017
+        options {
+            autoConnectRetry = true
+            connectTimeout = 3000
+            connectionsPerHost = 40
+            socketTimeout = 60000
+            threadsAllowedToBlockForConnectionMultiplier = 5
+            maxAutoConnectRetryTime = 5
+            maxWaitTime = 120000
+        }
+    }
 }
 hibernate {
     cache.use_second_level_cache = true
@@ -19,7 +29,13 @@ environments {
     development {
         dataSource {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
+        }
+        grails {
+            mongo {
+                username = ""
+                password = ""
+                databaseName = "self_service"
+            }
         }
     }
     test {
