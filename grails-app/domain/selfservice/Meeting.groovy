@@ -1,7 +1,10 @@
 package selfservice
 
+import org.bson.types.ObjectId
+
 class Meeting {
 
+    ObjectId id
     String title
     Date dateCreated
     Date meetingDate
@@ -9,6 +12,11 @@ class Meeting {
     User organizer
     List<User> invitees
     Room room
+
+    static mapWith = "mongo"
+
+    static embedded = ['invitees','organizer']
+
     static constraints = {
         title blank:false
         room validator: {val,obj->
