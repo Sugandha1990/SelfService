@@ -19,6 +19,7 @@ class Meeting {
 
     static constraints = {
         title blank:false
+        invitees nullable:true
         room validator: {val,obj->
       if(Meeting.findByRoomAndMeetingDateBetween(val,obj.meetingDate,new Date(obj.meetingDate.time+obj.duration*60000)))
           return false

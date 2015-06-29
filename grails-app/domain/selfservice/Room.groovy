@@ -15,7 +15,7 @@ class Room {
 
     static mapWith = "mongo"
 
-    static embedded = ['resources', 'roomType']
+    static embedded = ['resources']
 
     static constraints = {
         floor validator: {val,obj->
