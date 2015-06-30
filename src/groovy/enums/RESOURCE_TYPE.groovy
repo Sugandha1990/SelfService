@@ -1,8 +1,11 @@
 package enums
 
-/**
- * Created by intelligrape on 26/6/15.
- */
-class RESOURCE_TYPE {
-    enum type { PROJECTOR,CONFERENCE_CALL,SPEAKER,MIC}
+enum RESOURCE_TYPE {
+      PROJECTOR("PROJECTOR"), CONFERENCE_CALL("CONFERENCE_CALL"), SPEAKER("SPEAKER"), MIC("MIC")
+
+    private String type
+
+    RESOURCE_TYPE(String type){
+        this.type = type
+    }
 }

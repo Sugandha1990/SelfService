@@ -15,14 +15,13 @@ class Room {
 
     static mapWith = "mongo"
 
-    static embedded = ['resources']
-
     static constraints = {
         floor validator: {val,obj->
             if(Room.findByFloorAndName(val,obj.name))
                 return false
         }
         roomType nullable: true
+        resources nullable : true
         capacity min: 1
     }
 }
